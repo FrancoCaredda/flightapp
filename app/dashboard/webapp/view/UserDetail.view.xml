@@ -19,7 +19,10 @@
             <layout:VerticalLayout>
                 <Title text="{i18n>userdetail.objectpage.header.title2}"/>
                 <ObjectStatus title="{i18n>userdetail.objectpage.header.label3}" text="{address/street}"/>
-                <ObjectStatus title="{i18n>userdetail.objectpage.header.label4}" text="{address/postCode}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label4}" text="{
+                    path: 'address/postCode',
+                    type: 'sap.ui.model.type.String'
+                }"/>
                 <ObjectStatus title="{i18n>userdetail.objectpage.header.label5}" text="{address/city}"/>
                 <ObjectStatus title="{i18n>userdetail.objectpage.header.label6}" text="{address/country}"/>
             </layout:VerticalLayout>

@@ -1,10 +1,13 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Table id="BookingsTable" items="{bookings}" mode="MultiSelect">
+    <Table id="BookingsTable" items="{
+        path: 'bookings'
+    }" mode="MultiSelect">
         <headerToolbar>
             <Toolbar>
                 <Title text="{i18n>userdetail.objectpage.section1.title}"/>
                 <ToolbarSpacer />
-                <Button icon="sap-icon://add" text="{i18n>userdetail.objectpage.section1.subsection1.table.action1}"/>
+                <Button icon="sap-icon://create" text="{i18n>userdetail.objectpage.section1.subsection1.table.action1}"/>
+                <Button icon="sap-icon://delete" text="{i18n>userdetail.objectpage.section1.subsection1.table.action2}" press="onDeleteBookingButtonPressed"/>
             </Toolbar>
         </headerToolbar>
         <columns>

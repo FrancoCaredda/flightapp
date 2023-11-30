@@ -9,6 +9,9 @@ sap.ui.define([
                 .getRouter()
                 .getRoute("UserRoute")
                 .attachPatternMatched(this.__onPatternMatched, this);
+
+            const oEventBus = sap.ui.getCore().getEventBus();
+            oEventBus.subscribe("refreshUserDetail", "AllBookingsToDetailPage", this.__onRefreshRequested, this);
         },
         __onPatternMatched: function(oEvent) {
             debugger;
@@ -20,6 +23,9 @@ sap.ui.define([
             });
 
             this.getView().byId("page").setBindingContext(oBinding.getBoundContext());
+        },
+        __onRefreshRequested: function(sEventName, sChannel, oData) {
+            this.getView().byId("page").getBindingContext().refresh();
         }
     });
 });

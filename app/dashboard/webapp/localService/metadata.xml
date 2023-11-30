@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="BookingService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="FlightClasses" EntityType="BookingService.FlightClasses"/>
+                <EntitySet Name="Users" EntityType="BookingService.Users">
+                    <NavigationPropertyBinding Path="address" Target="Addresses"/>
+                    <NavigationPropertyBinding Path="bookings" Target="Bookings"/>
+                </EntitySet>
+                <EntitySet Name="Addresses" EntityType="BookingService.Addresses"/>
+                <EntitySet Name="Bookings" EntityType="BookingService.Bookings">
+                    <NavigationPropertyBinding Path="class" Target="FlightClasses"/>
+                    <NavigationPropertyBinding Path="user" Target="Users"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="FlightClasses">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="classCode" Type="Edm.String" MaxLength="1" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="Users">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="email" Type="Edm.String"/>
+                <Property Name="phoneNumber" Type="Edm.String"/>
+                <NavigationProperty Name="address" Type="BookingService.Addresses" Nullable="false">
+                    <ReferentialConstraint Property="address_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="address_ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="bookings" Type="Collection(BookingService.Bookings)" Partner="user">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Addresses">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="street" Type="Edm.String" Nullable="false"/>
+                <Property Name="postCode" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="city" Type="Edm.String" Nullable="false"/>
+                <Property Name="country" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="Bookings">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="airlineID" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="flightDate" Type="Edm.Date"/>
+                <NavigationProperty Name="class" Type="BookingService.FlightClasses" Nullable="false">
+                    <ReferentialConstraint Property="class_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="class_ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="user" Type="BookingService.Users" Partner="bookings">
+                    <ReferentialConstraint Property="user_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="user_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <Annotations Target="BookingService.EntityContainer/FlightClasses">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BookingService.Bookings/flightDate">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

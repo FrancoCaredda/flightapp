@@ -1,0 +1,39 @@
+<mvc:View xmlns:form="sap.ui.layout.form" 
+          xmlns:layout="sap.ui.layout" 
+          xmlns:core="sap.ui.core" 
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="flight.app.dashboard.controller.UserDetail"
+          xmlns:uxap="sap.uxap"
+          xmlns:SharedBlocks="flight.app.dashboard.SharedBlocks">
+    <uxap:ObjectPageLayout id="page">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader objectTitle="{name}" />
+        </uxap:headerTitle>
+        <uxap:headerContent>
+            <layout:VerticalLayout>
+                <Title text="{i18n>userdetail.objectpage.header.title1}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label1}" text="{email}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label2}" text="{phoneNumber}"/>
+            </layout:VerticalLayout>
+            <layout:VerticalLayout>
+                <Title text="{i18n>userdetail.objectpage.header.title2}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label3}" text="{address/street}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label4}" text="{address/postCode}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label5}" text="{address/city}"/>
+                <ObjectStatus title="{i18n>userdetail.objectpage.header.label6}" text="{address/country}"/>
+            </layout:VerticalLayout>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="{i18n>userdetail.objectpage.section1.title}" titleUppercase="false">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>userdetail.objectpage.section1.subsection1.title}" titleUppercase="false">
+                        <uxap:blocks>
+                            <SharedBlocks:AllBookings />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>

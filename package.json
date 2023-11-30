@@ -1,0 +1,22 @@
+{
+  "name": "flightapp",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-createflight": "cds watch --open createflight/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-flight.app": "cds watch --open flight.app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false"
+  }
+}

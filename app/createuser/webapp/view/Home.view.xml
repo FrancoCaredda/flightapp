@@ -1,0 +1,93 @@
+<mvc:View controllerName="flight.app.createuser.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core">
+    <f:DynamicPage id="page">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>overview.page.title}"/>
+                </f:heading>
+                <f:actions>
+                    <Button text="{i18n>overview.page.actions.action1}" icon="sap-icon://forward"/> 
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <form:SimpleForm layout="ColumnLayout">
+                <form:toolbar>
+                    <Toolbar>
+                        <Title text="{i18n>overview.form.toolbar.action1}"/>
+                        <ToolbarSpacer />
+                        <Button text="{i18n>overview.form.toolbar.action1}" icon="sap-icon://create" press="onUserCreate"/>
+                    </Toolbar>                    
+                </form:toolbar>
+                <form:content>
+                    <core:Title text="{i18n>overview.form.information.title}"/>
+                        <Label text="{i18n>overview.form.information.label1}"/>
+                        <Input value="{
+                            path: 'viewModel>/customer/name',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"/> 
+                        
+                        <Label text="{i18n>overview.form.information.label2}"/>
+                        <Input value="{
+                            path: 'viewModel>/customer/email',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"/>
+    
+                        <Label text="{i18n>overview.form.information.label3}"/>
+                        <Input value="{
+                            path: 'viewModel>/customer/phoneNumber',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"/>
+                    <core:Title text="{i18n>overview.form.address.title}"/>
+                        <Label text="{i18n>overview.form.address.label1}"/>
+                        <Input value="{
+                            path: 'viewModel>/address/street',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"/> 
+                            
+                        <Label text="{i18n>overview.form.address.label2}"/>
+                        <Input value="{
+                            path: 'viewModel>/address/postCode',
+                            type: 'sap.ui.model.type.Integer'
+                        }"/>
+        
+                        <Label text="{i18n>overview.form.address.label3}"/>
+                        <Input value="{path: 'viewModel>/address/city',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"/>
+    
+                        <Label text="{i18n>overview.form.address.label4}"/>
+                        <Input value="{
+                            path: 'viewModel>/address/country',
+                            type: 'sap.ui.model.type.String',
+                            constraints: {
+                                minLength: 1
+                            }
+                        }"/>
+                </form:content> 
+            </form:SimpleForm>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

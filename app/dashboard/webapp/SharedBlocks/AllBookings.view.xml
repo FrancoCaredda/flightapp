@@ -1,0 +1,4 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+          controllerName="flight.app.dashboard.controller.AllBookings">
+    <core:Fragment fragmentName="flight.app.dashboard.view.fragment.BookingsTable" type="XML" />
+</mvc:View>

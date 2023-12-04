@@ -6,7 +6,7 @@
             <Toolbar>
                 <Title text="{i18n>userdetail.objectpage.section1.title}"/>
                 <ToolbarSpacer />
-                <Button icon="sap-icon://create" text="{i18n>userdetail.objectpage.section1.subsection1.table.action1}"/>
+                <Button icon="sap-icon://create" text="{i18n>userdetail.objectpage.section1.subsection1.table.action1}" press="onCreateBookingButtonPressed"/>
                 <Button icon="sap-icon://delete" text="{i18n>userdetail.objectpage.section1.subsection1.table.action2}" press="onDeleteBookingButtonPressed"/>
             </Toolbar>
         </headerToolbar>
@@ -34,7 +34,10 @@
         </columns>
         <items>
             <ColumnListItem>
-                <Text text="{ID}"/>
+                <Text text="{
+                    path: 'ID', 
+                    type: 'sap.ui.model.type.String'
+                }"/>
                 <Text text="{airlineID}"/>
                 <Text text="{flightDate}"/>
                 <Text text="{

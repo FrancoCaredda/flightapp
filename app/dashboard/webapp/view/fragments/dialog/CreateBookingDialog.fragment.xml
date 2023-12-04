@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="CreateBookingDialog"
+            title="{i18n>userdetail.objectpage.dialog.createbooking.title}">
+        <content>
+            <form:SimpleForm>
+                <Label text="{i18n>userdetail.objectpage.dialog.createbooking.label1}"/>
+                <Input value="{viewModel>/createBookingDialog/airlineID}"/>
+                <Label text="{i18n>userdetail.objectpage.dialog.createbooking.label2}"/>
+                <DatePicker value="{viewModel>/createBookingDialog/flightDate}" valueFormat="yyyy-MM-dd"/>
+                <Label text="{i18n>userdetail.objectpage.dialog.createbooking.label3}"/>
+                <Select selectedKey="{viewModel>/createBookingDialog/class_ID}" items="{/FlightClasses}">
+                    <items>
+                        <core:Item text="{
+                            path: 'classCode',
+                            formatter: '.formatter.formatClassName'
+                        }" key="{ID}"/>
+                    </items>
+                </Select>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>userdetail.objectpage.dialog.createbooking.beginbutton}" press="onCreateBookingDialogConfirmPressed"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>userdetail.objectpage.dialog.createbooking.endbutton}" press="onCreateBookingDialogClosed"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

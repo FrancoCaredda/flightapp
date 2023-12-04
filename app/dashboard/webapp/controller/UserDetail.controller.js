@@ -14,7 +14,6 @@ sap.ui.define([
             oEventBus.subscribe("refreshUserDetail", "AllBookingsToDetailPage", this.__onRefreshRequested, this);
         },
         __onPatternMatched: function(oEvent) {
-            debugger;
             const sId = oEvent.getParameters().arguments.id;
 
             const oDataModel = this.getOwnerComponent().getModel();

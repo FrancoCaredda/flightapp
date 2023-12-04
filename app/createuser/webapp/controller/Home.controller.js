@@ -29,7 +29,6 @@ sap.ui.define([
                 let oCustomer = oViewModel.getProperty("/customer");
                 let oAddress  = oViewModel.getProperty("/address");
 
-                debugger;
                 try {
                     const oAddressEntity = await BookingServiceFacade.createEntity(oDataModel, oAddress, "/Addresses");
 

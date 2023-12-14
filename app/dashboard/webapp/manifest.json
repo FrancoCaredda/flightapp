@@ -96,7 +96,10 @@
         "viewPath": "flight.app.dashboard.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "bypassed": {
+          "target": ["TargetNotFound"]
+        }
       },
       "routes": [
         {
@@ -128,6 +131,13 @@
           "clearControlAggregation": false,
           "viewId": "User",
           "viewName": "UserDetail"
+        },
+        "TargetNotFound": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "NotFound",
+          "viewName": "NoPageFound"
         }
       }
     },

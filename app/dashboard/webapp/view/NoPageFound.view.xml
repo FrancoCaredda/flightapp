@@ -1,0 +1,7 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+    controllerName="flight.app.dashboard.controller.NoPageFound">
+    <VBox>
+        <Title text="{i18n>notFound}"/>
+        <Button text="{i18n>back}" press="onGoBackButtonPressed"/>
+    </VBox>
+</mvc:View>

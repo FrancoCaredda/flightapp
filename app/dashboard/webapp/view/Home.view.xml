@@ -16,7 +16,7 @@
         <f:header>
             <f:DynamicPageHeader>
                 <f:content>
-                    <fb:FilterBar filterBarExpanded="true" showClearOnFB="true" useToolbar="false" showFilterConfiguration="true" showGoOnFB="true" search="onFilterBarSearchPressed">
+                    <fb:FilterBar filterBarExpanded="true" clear="onFilterBarClear" showClearOnFB="true" useToolbar="false" showFilterConfiguration="true" showGoOnFB="true" search="onFilterBarSearchPressed">
                         <fb:filterGroupItems>
                             <fb:FilterGroupItem visibleInFilterBar="true" id="itemName" name="itemName" groupName="item1" label="{i18n>home.filterbar.label1}">
                                 <fb:control>

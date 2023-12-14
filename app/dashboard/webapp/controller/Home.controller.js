@@ -16,6 +16,17 @@ sap.ui.define([
                     filterBar: {}
                 }), "viewModel");
             },
+            onFilterBarClear: function(oEvent) {
+                const oViewModel = this.getView().getModel("viewModel");
+                let oFilterBarData = oViewModel.getProperty("/filterBar");
+        
+                for (const sKey in oFilterBarData) {
+                    oFilterBarData[sKey] = "";
+                }
+
+                this.getView().byId("CustomerTable").getBinding("items").filter([]);
+                oViewModel.refresh();
+            },
             onFilterBarSearchPressed: function(oEvent) {
                 const oViewModel = this.getView().getModel("viewModel");
                 const oTable = this.getView().byId("CustomerTable");
